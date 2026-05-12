@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pic</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:
+      linear-gradient(135deg,#5a5a5a,#1f1f1f,#000000);
+      padding:20px;
+      overflow:hidden;
+    }
+
+    .container{
+      width:100%;
+      max-width:360px;
+      text-align:center;
+    }
+
+    .title{
+      color:white;
+      font-size:30px;
+      font-weight:bold;
+      margin-bottom:20px;
+      animation:pulse 2s infinite;
+      letter-spacing:1px;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+        opacity:0.8;
+      }
+      50%{
+        transform:scale(1.05);
+        opacity:1;
+      }
+      100%{
+        transform:scale(1);
+        opacity:0.8;
+      }
+    }
+
+    .card{
+      width:100%;
+      height:520px;
+      perspective:1200px;
+      cursor:pointer;
+    }
+
+    .inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transition:transform 0.9s;
+      transform-style:preserve-3d;
+    }
+
+    .card.flip .inner{
+      transform:rotateY(180deg);
+    }
+
+    .front,
+    .back{
+      position:absolute;
+      width:100%;
+      height:100%;
+      border-radius:25px;
+      overflow:hidden;
+      backface-visibility:hidden;
+      box-shadow:
+      0 10px 35px rgba(0,0,0,0.5);
+    }
+
+    /* FRONT SIDE */
+
+    .front{
+      background:#111;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:15px;
+    }
+
+    .front img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      border-radius:20px;
+      background:black;
+    }
+
+    /* BACK SIDE */
+
+    .back{
+      transform:rotateY(180deg);
+
+      background:
+      linear-gradient(145deg,#1e1e1e,#2d2d2d,#111111);
+
+      color:white;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      padding:28px;
+      text-align:center;
+    }
+
+    .message{
+      font-size:20px;
+      line-height:1.8;
+    }
+
+    .message span{
+      color:#ff9eb5;
+      font-weight:bold;
+    }
+
+    .hint{
+      margin-top:18px;
+      color:#cccccc;
+      font-size:14px;
+    }
+
+    @media(max-width:480px){
+
+      .title{
+        font-size:26px;
+      }
+
+      .card{
+        height:500px;
+      }
+
+      .message{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="title">✨ Click Me ✨</div>
+
+    <div class="card" onclick="flipCard(this)">
+
+      <div class="inner">
+
+        <!-- FRONT -->
+
+        <div class="front">
+
+          <!-- Rename your image to couple.png -->
+          <img src="mypic.png" alt="Photo">
+
+        </div>
+
+        <!-- BACK -->
+
+        <div class="back">
+
+          <div class="message">
+
+            Hey! I wanted to make your work day
+            a little lighter so here's a joke for you.<br>
+
+           <b>Me:</b> I finally figured out why Java developers wear glasses. <br>
+
+            <b>You:</b> Why?<br>
+
+            <b>Me:</b> Because they can't C#. 😂<br>
+
+            Okay, I just tried. Not a good joke though.
+
+            Smile a little. it makes you look cute! Good Day.<br>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <script>
+
+    function flipCard(card){
+      card.classList.toggle("flip");
+    }
+
+  </script>
+
+</body>
+</html>
